@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quartz-roster-worker
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/jacksondprice/quartz-roster-worker:1.4.0
+          envFrom:
+            - secretRef:
+                name: app-secrets
